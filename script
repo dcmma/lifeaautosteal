@@ -14,5 +14,5 @@ getgenv().LifeaAutoFarmSettings = {
     }
 }
 
-script_key = "Your_Key";
+script_key = "SmzOiWxvCfyeOuRFIAPjMWojVbEocmHp";
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/7207528cc6cd6e631be661df17cbb6b6.lua"))()
