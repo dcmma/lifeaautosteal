@@ -1,18 +1,19 @@
-getgenv().LifeaAutoFarmSettings = {
-    Enabled = true,
-    GUI_Enabled = true,-- to see gui in the game
-    IgnoreOwnPlot = true, -- ignores ur own plot. dont toggle off
-    TargetPets = {
-        ["Los Tralaleritos"] = true,
-        ["La Vacca Saturno Saturnita"] = true,
-        ["Odin Din Din Dun"] = true,
-        ["Tralalero Tralala"] = false,
-        ["Graipuss Medussi"] = true,
-        ["La Grande Combinasion"] = true,
-        ["Garama and Madundung"] = true,
-        ["Trenostruzzo Turbo 3000"] = true,
-    }
-}
-
-script_key = "SmzOiWxvCfyeOuRFIAPjMWojVbEocmHp";
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/7207528cc6cd6e631be661df17cbb6b6.lua"))()
+_G.MoneyBoostEnabled = true
+ 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local generateBoostEvent = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("generateBoost")
+ 
+local function generateMoneyBoost()
+    while _G.MoneyBoostEnabled do
+        generateBoostEvent:FireServer("Coins", 480, 3000000)
+        task.wait(0)
+    end
+end
+ 
+task.spawn(function()
+    while task.wait(0.1) do
+        if _G.MoneyBoostEnabled then
+            generateMoneyBoost()
+        end
+    end
+end)
